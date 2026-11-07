@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Auction Arena — Organizer Edition</title>
+<style>
+:root{--bg:#f5f7fb;--panel:#fff;--ink:#172033;--muted:#748096;--line:#e5eaf2;--aqua:#13b8c8;--violet:#7655e8;--gold:#f4b740;--red:#e45d68;--green:#19a879;--shadow:0 8px 24px #24324a0b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:14px/1.45 Inter,system-ui,Segoe UI,sans-serif;color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;background:#edf1f8;color:var(--ink);font-weight:650}button.primary{background:linear-gradient(100deg,var(--aqua),var(--violet));color:white}button:disabled{opacity:.42;cursor:not-allowed;filter:grayscale(.2)}button.danger{background:#fff0f1;color:#bd3946}button.small{padding:6px 9px;font-size:12px}.shell{display:grid;grid-template-columns:238px 1fr;min-height:100vh}.sidebar{background:#fff;border-right:1px solid var(--line);padding:22px 14px;position:sticky;top:0;height:100vh;overflow:auto}.brand{font-size:21px;font-weight:900;letter-spacing:-.7px;margin:0 8px 4px}.brand span{color:var(--violet)}.subbrand{color:var(--muted);font-size:11px;margin:0 8px 24px}.navgroup{font-size:10px;color:#9aa4b5;font-weight:800;letter-spacing:1px;margin:18px 10px 7px}.nav button{width:100%;text-align:left;background:transparent;padding:10px 12px;color:#657086;margin:2px 0}.nav button.active,.nav button:hover{background:#f0edff;color:var(--violet)}.nav .icon{display:inline-block;width:24px}.sidebar-foot{margin-top:24px;border-top:1px solid var(--line);padding-top:15px}.main{min-width:0;padding:22px 28px 50px}.topbar{display:flex;align-items:center;gap:12px;justify-content:space-between;margin-bottom:24px}.topbar h1{font-size:25px;margin:0;letter-spacing:-.7px}.muted{color:var(--muted)}.top-actions{display:flex;gap:8px;flex-wrap:wrap}.menuBtn{display:none}.page{display:none}.page.active{display:block}.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:18px 0}.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:17px;box-shadow:var(--shadow)}.metric-label{color:var(--muted);font-size:12px}.metric{font-size:28px;font-weight:850;letter-spacing:-1px;margin:7px 0}.metric-note{font-size:11px;color:var(--muted)}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:22px 0 12px}.sectionhead h2{font-size:17px;margin:0}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:5px}.field label{font-size:12px;font-weight:700;color:#5f6b80}.field input,.field select,.field textarea{width:100%;border:1px solid #dfe5ee;border-radius:9px;padding:10px;background:white;color:var(--ink);min-width:0}.field textarea{min-height:72px}.formrow{display:flex;gap:8px;flex-wrap:wrap;align-items:end}.formrow .field{flex:1;min-width:140px}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:12px;background:white}table{border-collapse:collapse;width:100%;min-width:580px}th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);font-size:12px}th{background:#f8f9fc;color:#7b8698;font-size:10px;text-transform:uppercase;letter-spacing:.6px}tr:last-child td{border-bottom:0}.tag{display:inline-block;padding:4px 7px;border-radius:20px;background:#eef1f7;color:#6b7486;font-size:10px;font-weight:800}.tag.green{background:#e4f8f0;color:#16855f}.tag.purple{background:#eee9ff;color:#6d4cdb}.tag.red{background:#fff0f1;color:#c0444e}.empty{padding:24px;text-align:center;color:var(--muted)}.notice{padding:12px 14px;border-radius:10px;background:#eaf9fb;color:#177c88;font-size:12px;margin:12px 0}.auctionbox{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.bigplayer{background:linear-gradient(135deg,#e8fbfc,#f2edff);border-radius:16px;padding:24px;text-align:center}.bigplayer h2{font-size:28px;margin:10px 0}.price{font-size:38px;font-weight:900;color:var(--violet)}.bidrow{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:15px}.bidrow button{min-width:85px}.history{max-height:220px;overflow:auto}.history div{padding:8px;border-bottom:1px solid var(--line);font-size:12px}.pillrow{display:flex;gap:6px;flex-wrap:wrap}.pillrow button.active{background:var(--violet);color:#fff}.toast{position:fixed;right:20px;bottom:20px;background:#172033;color:white;padding:12px 16px;border-radius:12px;display:none;z-index:20}.modal{display:none;position:fixed;inset:0;background:#14203366;z-index:30;align-items:center;justify-content:center;padding:15px}.modal.open{display:flex}.modalbox{background:white;border-radius:16px;padding:22px;width:min(650px,100%);max-height:90vh;overflow:auto}.modalhead{display:flex;justify-content:space-between;align-items:center}.modalhead h2{margin:0}.hidden{display:none!important}.footerhint{font-size:11px;color:var(--muted);margin-top:10px}.field input[type=file]{padding:7px;font-size:11px}.imgthumb{width:44px;height:44px;object-fit:contain;border-radius:9px;background:#fff;border:1px solid #e2e8f0;padding:2px}
+@media(max-width:900px){.shell{grid-template-columns:1fr}.sidebar{position:fixed;z-index:15;left:-260px;width:238px;transition:left .2s;box-shadow:var(--shadow)}.sidebar.open{left:0}.menuBtn{display:inline-block}.main{padding:16px}.cards{grid-template-columns:repeat(2,1fr)}.grid2,.auctionbox{grid-template-columns:1fr}.formgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.cards,.formgrid,.grid3{grid-template-columns:1fr}.topbar h1{font-size:20px}.top-actions button{padding:8px}.sectionhead{align-items:flex-start;flex-direction:column}}
+
+.player-auction-layout{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.75fr);gap:16px;align-items:start}.player-toolbar{display:grid;grid-template-columns:1fr 1.5fr;gap:12px;margin-bottom:14px}.player-stage{border:1px solid #dce7f4;border-radius:18px;padding:22px;background:radial-gradient(circle at 15% 0%,#dffafd 0,transparent 38%),linear-gradient(140deg,#f5fbff,#f3efff);text-align:center}.player-stage-top{display:flex;justify-content:space-between;margin-bottom:16px}.player-stage h2{font-size:clamp(24px,4vw,36px);margin:8px 0 4px;overflow-wrap:anywhere}.player-price-label{font-size:10px;font-weight:800;letter-spacing:1.5px;color:#7b8698;margin-top:16px}.player-bid-controls{display:grid;grid-template-columns:1.2fr .8fr;gap:12px;max-width:520px;margin:16px auto 0;text-align:left}.purse-display{border:1px solid #dfe5ee;border-radius:9px;background:#fff;padding:10px;font-weight:800;color:#16855f}.sell-btn{background:#e5f8f0;color:#16855f}.player-bid-actions button{flex:1;min-width:100px}.player-navigation,.player-sim-row{display:flex;gap:8px;justify-content:space-between;flex-wrap:wrap;margin-top:12px}.player-sim-row{justify-content:flex-start}.player-history{max-height:340px}.player-side-stats{display:grid;gap:9px;margin-top:14px}.player-side-stats>div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:9px 0}.player-side-stats b{text-align:right}.player-log-panel{position:sticky;top:15px}
+@media(max-width:900px){.player-auction-layout{grid-template-columns:1fr}.player-log-panel{position:static}.player-history{max-height:220px}}
+@media(max-width:560px){.player-toolbar,.player-bid-controls{grid-template-columns:1fr}.player-stage{padding:16px}.player-navigation button{flex:1}.player-bid-actions button{min-width:calc(50% - 8px)}}
+
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="sidebar" id="sidebar">
+<div class="brand">AUCTION <span>ARENA</span></div><div class="subbrand">Organizer Edition · Offline-capable</div>
+<div class="nav">
+<div class="navgroup">WORKSPACE</div>
+<button class="active" data-page="home">▦ <span class="icon"></span>Overview</button>
+<button data-page="setup">⚙ <span class="icon"></span>Auction Setup</button>
+<div class="navgroup">AUCTION DATA</div>
+<button data-page="owners">♙ <span class="icon"></span>Owners / Bidders</button>
+<button data-page="teams">♜ <span class="icon"></span>Team List</button>
+<button data-page="players">♟ <span class="icon"></span>Players & Sets</button>
+<div class="navgroup">LIVE AUCTIONS</div>
+<button data-page="teamauction">◆ <span class="icon"></span>Team Auction</button>
+<button data-page="playerauction">⚡ <span class="icon"></span>Player Auction</button>
+<button data-page="squads">☷ <span class="icon"></span>Squads</button>
+<button data-page="results">▤ <span class="icon"></span>Results & History</button>
+<button data-page="highlights">✦ <span class="icon"></span>Auction Highlights</button>
+</div>
+<div class="sidebar-foot"><button data-page="settings" style="width:100%;text-align:left">⚙ Settings & Backup</button></div>
+</aside>
+<main class="main">
+<header class="topbar"><div style="display:flex;align-items:center;gap:10px"><button class="menuBtn" id="menuBtn">☰</button><div><h1 id="pageTitle">Overview</h1><div class="muted" id="leagueSubtitle">Create and run your own auction</div></div></div><div class="top-actions"><button id="saveBtn">Save Game</button><button class="primary" id="quickSetup">+ Setup Auction</button></div></header>
+
+<section class="page active" id="home">
+<div class="panel" style="background:linear-gradient(110deg,#e8fbfc,#f3efff);border:0"><h2 style="margin:0 0 5px">Your Auction. Your Rules.</h2><div class="muted">Organizer controls bidders, teams, players, budgets, auction order and every rule.</div><div class="top-actions" style="margin-top:15px"><button class="primary" data-page="setup">Configure Auction</button><button data-page="teamauction">Start Team Auction</button><button data-page="playerauction">Start Player Auction</button><button class="primary" id="simulateAllHome">🤖 Simulate All Auctions</button></div></div>
+<div class="cards">
+<div class="card"><div class="metric-label">Owners / Bidders</div><div class="metric" id="mOwners">0</div><div class="metric-note">Organizer-added participants</div></div>
+<div class="card"><div class="metric-label">Teams</div><div class="metric" id="mTeams">0</div><div class="metric-note">Teams available</div></div>
+<div class="card"><div class="metric-label">Players</div><div class="metric" id="mPlayers">0</div><div class="metric-note">Across all player sets</div></div>
+<div class="card"><div class="metric-label">Sold Players</div><div class="metric" id="mSold">0</div><div class="metric-note">Current auction results</div></div>
+</div>
+<div class="grid2"><div class="panel"><div class="sectionhead"><h2>Setup Checklist</h2><button class="small" data-page="setup">Edit Setup</button></div><div id="checklist"></div></div><div class="panel"><div class="sectionhead"><h2>Recent Activity</h2><button class="small" data-page="results">View History</button></div><div id="recentActivity" class="history"></div></div></div>
+</section>
+
+<section class="page" id="setup">
+<div class="panel"><div class="sectionhead"><h2>League / Auction Configuration</h2><span class="tag purple">Organizer controls</span></div>
+<div class="formgrid">
+<div class="field"><label>Auction / League Name</label><input id="leagueName" placeholder="e.g. Hamidchar Premier League"></div>
+<div class="field"><label>Currency</label><select id="currency"><option>৳</option><option>₹</option><option>$</option><option>£</option><option>€</option><option>PKR</option><option>AED</option></select></div>
+<div class="field"><label>Player Auction Mode</label><select id="auctionMode"><option value="linked">Linked to Team Auction</option><option value="custom">Independent / Custom</option></select></div>
+<div class="field"><label>Team Auction Base Price (default)</label><input id="teamBase" type="number" min="0" value="0"></div>
+<div class="field"><label>Team Auction Minimum Increment</label><input id="teamIncrement" type="number" min="1" value="10"></div>
+<div class="field"><label>Player Auction Minimum Increment</label><input id="playerIncrement" type="number" min="1" value="5"></div>
+<div class="field"><label>Player Squad Limit</label><input id="squadLimit" type="number" min="1" value="18"></div>
+<div class="field"><label>Player Auction Team Purse</label><input id="playerPurse" type="number" min="0" value="1000"></div>
+<div class="field"><label>Bidder limit (one team per league)</label><select id="ownerLimit"><option value="yes">One owner = one team per league</option><option value="no">No ownership limit</option></select></div>
+</div><div class="top-actions" style="margin-top:14px"><button class="primary" id="saveSetup">Save Configuration</button></div>
+<div class="notice">Linked mode: team ownership from Team Auction is carried into Player Auction. Custom mode: create independent player-auction bidders/teams and purses in the Teams section.</div>
+</div>
+</section>
+
+<section class="page" id="owners"><div class="grid2"><div class="panel"><h2>Add Owner / Bidder</h2><div class="formgrid">
+<div class="field"><label>Owner / Bidder Name</label><input id="ownerName" placeholder="Owner name"></div><div class="field"><label>Display Name</label><input id="ownerDisplay" placeholder="Short name (optional)"></div><div class="field"><label>Company / Group</label><input id="ownerCompany" placeholder="Group (optional)"></div><div class="field"><label>Team Auction Budget</label><input id="ownerBudget" type="number" min="0" value="5000"></div><div class="field"><label>Player Auction Budget (Custom Mode)</label><input id="ownerPlayerBudget" type="number" min="0" value="1000"></div><div class="field"><label>Company Logo</label><input id="ownerLogoInput" type="file" accept="image/*"><small class="muted">Upload company / owner logo</small><div id="ownerLogoPreview"></div></div></div><button class="primary" id="addOwner" style="margin-top:12px">Add Owner</button></div>
+<div class="panel"><h2>Owner / Bidder List</h2><div class="muted">Add every participant who may bid. Budget is editable.</div><div id="ownersTable" style="margin-top:12px"></div></div></div></section>
+
+<section class="page" id="teams"><div class="grid2"><div class="panel"><h2>Add Team</h2><div class="formgrid"><div class="field"><label>Team Name</label><input id="teamName" placeholder="Team name"></div><div class="field"><label>Team Auction Base Price</label><input id="teamPrice" type="number" min="0" placeholder="Uses default if blank"></div><div class="field"><label>Custom Player Auction Bidder</label><select id="teamCustomOwner"></select></div><div class="field"><label>Custom Player Auction Purse</label><input id="teamCustomPurse" type="number" min="0" value="1000"></div><div class="field"><label>Team Logo</label><input id="teamLogoInput" type="file" accept="image/*"><small class="muted">Upload team crest / logo</small><div id="teamLogoPreview"></div></div></div><button class="primary" id="addTeam" style="margin-top:12px">Add Team</button></div><div class="panel"><h2>Team List</h2><div class="muted">Team Auction teams and independent-mode teams.</div><div id="teamsTable" style="margin-top:12px"></div></div></div></section>
+
+<section class="page" id="players"><div class="grid2"><div class="panel"><h2>Create Player Set</h2><div class="formrow"><div class="field"><label>Set Name</label><input id="setName" placeholder="e.g. Marquee / Set 1"></div><button class="primary" id="addSet">Create Set</button></div><div id="setList" style="margin-top:12px"></div></div><div class="panel"><h2>Add Player</h2><div class="formgrid"><div class="field"><label>Player Name</label><input id="playerName" placeholder="Player full name"></div><div class="field"><label>Country</label><input id="playerCountry" placeholder="Country"></div><div class="field"><label>Role</label><select id="playerRole"><option>Batter</option><option>Bowler</option><option>All-rounder</option><option>Wicketkeeper</option></select></div><div class="field"><label>Player Set</label><select id="playerSet"></select></div><div class="field"><label>Base Price</label><input id="playerBase" type="number" min="0" value="10"></div><div class="field"><label>Player Auction Order</label><input id="playerOrder" type="number" min="1" value="1"></div><div class="field"><label>Player Photo</label><input id="playerImageInput" type="file" accept="image/*"><small class="muted">Upload player portrait</small><div id="playerImagePreview"></div></div></div><button class="primary" id="addPlayer" style="margin-top:12px">Add Player</button></div></div>
+<div class="panel" style="margin-top:16px"><div class="sectionhead"><h2>Player Database</h2><div class="top-actions"><button id="csvTemplate">Download CSV Template</button><label class="field" style="display:block"><input id="csvImport" type="file" accept=".csv,text/csv"></label></div></div><div id="playersTable"></div><div class="footerhint">CSV columns: name,country,role,set,basePrice,order</div></div>
+</section>
+
+<section class="page" id="teamauction"><div class="auctionbox"><div class="panel"><div class="sectionhead"><h2>Team Auction Console</h2><span class="tag purple" id="teamAuctionStatus">Ready</span></div><div class="field"><label>Choose Team to Auction</label><select id="teamAuctionSelect"></select></div><div class="field" style="margin-top:10px"><label>Choose eligible owner/bidder</label><select id="teamBidderSelect"></select></div><div class="bigplayer" style="margin-top:14px"><div id="teamAuctionLogo"></div><div class="muted">Current Team</div><h2 id="teamAuctionName">Select a team</h2><div class="price" id="teamCurrentPrice">—</div><div class="muted" id="teamAuctionInfo">Base price / current bid</div><div class="bidrow"><button id="teamBidMinus">− Increment</button><button class="primary" id="teamBid">Place Bid</button><button id="teamSell" style="background:#e5f8f0;color:#16855f">SOLD</button><button class="danger" id="teamUnsold">UNSOLD</button></div></div><div class="top-actions" style="margin-top:12px"><button id="teamNext">Next Team</button><button id="teamResetCurrent">Reset Current Bid</button><button class="primary" id="simulateTeamAuction">🤖 Simulate Full Team Auction</button></div></div>
+<div class="panel"><h2>Current Bid / Auction Log</h2><div id="teamBidSummary" class="notice">Select a team to begin.</div><div class="history" id="teamLog"></div><div class="footerhint">A team is assigned to the highest bidder when SOLD. Ownership limit can prevent a repeat owner.</div></div></div></section>
+
+<section class="page" id="playerauction">
+<div class="player-auction-layout">
+ <div class="panel player-console">
+  <div class="sectionhead" style="margin-top:0"><div><h2>Player Auction Console</h2><div class="muted">Live bidding · Organizer control</div></div><span class="tag purple" id="playerAuctionStatus">READY</span></div>
+  <div class="player-toolbar"><div class="field"><label>Player Set</label><select id="playerAuctionSet"></select></div><div class="field"><label>Player (all statuses)</label><select id="playerAuctionSelect"></select></div></div>
+  <div class="player-stage">
+   <div class="player-stage-top"><span class="tag" id="playerRoleTag">PLAYER</span><span class="tag" id="playerOrderTag">#—</span></div>
+   <div id="playerAuctionPhoto"></div><div class="muted" id="playerCountryRole">Player details</div><h2 id="playerAuctionName">Select a player</h2>
+   <div class="player-price-label">CURRENT BID</div><div class="price" id="playerCurrentPrice">—</div><div class="muted" id="playerAuctionInfo">Base price / current bid</div>
+   <div class="player-bid-controls"><div class="field"><label>Bidder / Team</label><select id="playerBidderSelect"></select></div><div class="field"><label>Available Purse</label><div class="purse-display" id="playerBidderPurse">—</div></div></div>
+   <div class="bidrow player-bid-actions"><button id="playerBidMinus">− Reduce bid</button><button class="primary" id="playerBid">Place Bid</button><button id="playerSell" class="sell-btn">SOLD</button><button class="danger" id="playerUnsold">UNSOLD</button></div>
+  </div>
+  <div class="player-navigation"><button id="playerPrev">← Previous</button><button id="playerResetCurrent">Reset Bid</button><button id="playerNext">Next Player →</button></div>
+  <div class="player-sim-row"><button class="primary" id="simulatePlayerAuction">🤖 Simulate Full Player Auction</button><button id="playerSimStop">Stop Simulation</button></div>
+  <div id="playerBidSummary" class="notice">Choose a player to start.</div>
+ </div>
+ <aside class="panel player-log-panel"><div class="sectionhead" style="margin-top:0"><h2>Bid Activity</h2><span class="tag">Live log</span></div><div id="playerLog" class="history player-history"></div><div class="player-side-stats"><div><span class="muted">Squad slots left</span><b id="playerSlotsLeft">—</b></div><div><span class="muted">Purse remaining</span><b id="playerRemainingPurse">—</b></div><div><span class="muted">Player status</span><b id="playerStatusDetail">—</b></div></div><div class="footerhint">Linked mode uses the Team Auction owner and shared purse. Custom mode uses independent team bidders and purses.</div></aside>
+</div></section>
+
+<section class="page" id="squads"><div class="panel"><div class="sectionhead"><h2>Squad Management</h2><button id="refreshSquads">Refresh</button></div><div id="squadTable"></div></div></section>
+<section class="page" id="results"><div class="panel"><div class="sectionhead"><h2>Results & Auction History</h2><div class="top-actions"><button id="exportResults">Export Results CSV</button><button class="danger" id="clearHistory">Clear History</button></div></div><div id="resultsTables"></div></div></section>
+<section class="page" id="highlights"><div class="panel"><div class="sectionhead"><h2>🏆 Auction Highlights</h2><span class="tag purple">Auto-generated</span></div><div class="cards" id="highlightMetrics"></div><div id="highlightContent"></div></div></section>
+<section class="page" id="settings"><div class="grid2"><div class="panel"><h2>Save / Backup / Restore</h2><p class="muted">Save this game in the current browser or export a portable JSON backup.</p><div class="top-actions"><button class="primary" id="backupBtn">Export Game Backup (JSON)</button><label class="field"><input id="backupImport" type="file" accept=".json,application/json"></label></div><div class="notice">This offline-capable version stores data in this browser on this device. Export backups regularly to move the game to another browser/device.</div></div><div class="panel"><h2>Game Controls</h2><div class="top-actions"><button id="resetAuctions">Reset Auction Status</button><button class="danger" id="resetGame">Reset Entire Game</button></div><p class="footerhint">Resetting auction status keeps your owners, teams, player sets and players. Reset Entire Game clears local game data.</p></div></div></section>
+</main></div>
+<div class="toast" id="toast"></div>
+<!-- Simulation status overlay -->
+<div id="simProgress" style="display:none;position:fixed;left:50%;bottom:18px;transform:translateX(-50%);width:min(520px,92vw);background:#fff;border:1px solid #dfe5ee;box-shadow:0 12px 36px #17203322;border-radius:14px;padding:14px 16px;z-index:25">
+ <div style="display:flex;justify-content:space-between;gap:10px;font-weight:750;margin-bottom:8px"><span id="simProgressText">Simulation running…</span><button id="simStop" class="danger small">Stop</button></div>
+ <div style="height:8px;background:#eef1f7;border-radius:20px;overflow:hidden"><div id="simProgressBar" style="height:100%;width:0;background:linear-gradient(90deg,#13b8c8,#7655e8);transition:width .15s"></div></div>
+</div>
+
+<div class="modal" id="editModal"><div class="modalbox"><div class="modalhead"><h2 id="modalTitle">Edit item</h2><button id="closeModal">✕</button></div><div id="modalContent"></div></div></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const money=n=>`${state.currency||'৳'}${Number(n||0).toLocaleString()}`;
+const uid=()=>Math.random().toString(36).slice(2,9);
+const initial=()=>({leagueName:'My Auction Arena',currency:'৳',mode:'linked',teamBase:0,teamIncrement:10,playerIncrement:5,squadLimit:18,playerPurse:1000,ownerLimit:true,owners:[],teams:[],sets:['Default Set'],players:[],teamAuctions:{},playerAuctions:{},history:[],page:'home'});
+let state=load();
+function load(){try{return JSON.parse(localStorage.getItem('auctionArenaGame'))||initial()}catch{return initial()}}
+function save(){localStorage.setItem('auctionArenaGame',JSON.stringify(state));toast('Game saved in this browser');render()}
+function toast(t){$('toast').textContent=t;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',2300)}
+function log(msg){state.history.unshift({time:new Date().toLocaleString(),msg});state.history=state.history.slice(0,500)}
+function showPage(p){state.page=p;document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===p));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===p));$('pageTitle').textContent=({home:'Overview',setup:'Auction Setup',owners:'Owners / Bidders',teams:'Team List',players:'Players & Sets',teamauction:'Team Auction',playerauction:'Player Auction',squads:'Squad Management',results:'Results & History',highlights:'Auction Highlights',settings:'Settings & Backup'})[p]||p;$('sidebar').classList.remove('open');render();localStorage.setItem('auctionArenaGame',JSON.stringify(state))}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+$('menuBtn').onclick=()=>$('sidebar').classList.toggle('open');
+$('saveBtn').onclick=save;$('quickSetup').onclick=()=>showPage('setup');
+function setupFields(){['leagueName','currency','auctionMode','teamBase','teamIncrement','playerIncrement','squadLimit','playerPurse','ownerLimit'].forEach(id=>{let key={leagueName:'leagueName',currency:'currency',auctionMode:'mode',teamBase:'teamBase',teamIncrement:'teamIncrement',playerIncrement:'playerIncrement',squadLimit:'squadLimit',playerPurse:'playerPurse',ownerLimit:'ownerLimit'}[id];$(id).value=state[key]??''})}
+$('saveSetup').onclick=()=>{state.leagueName=$('leagueName').value||'Auction Arena';state.currency=$('currency').value;state.mode=$('auctionMode').value;state.teamBase=+ $('teamBase').value||0;state.teamIncrement=Math.max(1,+$('teamIncrement').value||1);state.playerIncrement=Math.max(1,+$('playerIncrement').value||1);state.squadLimit=Math.max(1,+$('squadLimit').value||1);state.playerPurse=+$('playerPurse').value||0;state.ownerLimit=$('ownerLimit').value==='yes';log('Auction setup updated');save();toast('Configuration saved')};
+let pendingOwnerLogo='',pendingTeamLogo='',pendingPlayerImage='';
+function processImage(file,cb){if(!file){cb('');return}if(!file.type.startsWith('image/')){toast('Please select an image file');cb('');return}const reader=new FileReader();reader.onload=()=>{const img=new Image();img.onload=()=>{const max=420,scale=Math.min(1,max/Math.max(img.width,img.height));const canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(img.width*scale));canvas.height=Math.max(1,Math.round(img.height*scale));canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);cb(canvas.toDataURL('image/jpeg',.78))};img.onerror=()=>cb('');img.src=reader.result};reader.onerror=()=>cb('');reader.readAsDataURL(file)}
+function setPreview(id,src){$(id).innerHTML=src?`<img src="${src}" alt="Image preview" style="width:64px;height:64px;object-fit:contain;border:1px solid #dfe5ee;border-radius:10px;background:#fff;padding:3px;margin-top:5px">`:''}
+function avatar(src,label='Image'){return src?`<img src="${src}" alt="${label}" style="width:42px;height:42px;object-fit:contain;border-radius:10px;background:#fff;border:1px solid #e2e8f0;padding:2px;vertical-align:middle">`:`<span style="display:inline-flex;width:42px;height:42px;border-radius:10px;background:#eef1f7;align-items:center;justify-content:center;font-size:20px;vertical-align:middle">${label==='Player'?'🏏':label==='Team'?'🏟️':'🏢'}</span>`}
+$('ownerLogoInput').onchange=e=>processImage(e.target.files[0],src=>{pendingOwnerLogo=src;setPreview('ownerLogoPreview',src)});
+$('teamLogoInput').onchange=e=>processImage(e.target.files[0],src=>{pendingTeamLogo=src;setPreview('teamLogoPreview',src)});
+$('playerImageInput').onchange=e=>processImage(e.target.files[0],src=>{pendingPlayerImage=src;setPreview('playerImagePreview',src)});
+function addOwner(){let name=$('ownerName').value.trim();if(!name)return toast('Owner name required');state.owners.push({id:uid(),name,display:$('ownerDisplay').value.trim()||name,company:$('ownerCompany').value.trim(),budget:+$('ownerBudget').value||0,playerBudget:+$('ownerPlayerBudget').value||state.playerPurse,spent:0,playerSpent:0,logo:pendingOwnerLogo});pendingOwnerLogo='';$('ownerLogoInput').value='';setPreview('ownerLogoPreview','');$('ownerName').value='';$('ownerDisplay').value='';$('ownerCompany').value='';log(`Owner added: ${name}`);save()}
+$('addOwner').onclick=addOwner;
+function addTeam(){let name=$('teamName').value.trim();if(!name)return toast('Team name required');let owner=$('teamCustomOwner').value;state.teams.push({id:uid(),name,basePrice:$('teamPrice').value===''?state.teamBase:+$('teamPrice').value,customOwner:owner||'',customPurse:+$('teamCustomPurse').value||state.playerPurse,customSpent:0,ownerId:'',price:0,playerSpent:0,players:[],logo:pendingTeamLogo});pendingTeamLogo='';$('teamLogoInput').value='';setPreview('teamLogoPreview','');$('teamName').value='';$('teamPrice').value='';log(`Team added: ${name}`);save()}
+$('addTeam').onclick=addTeam;
+$('addSet').onclick=()=>{let s=$('setName').value.trim();if(!s)return toast('Set name required');if(state.sets.includes(s))return toast('Set already exists');state.sets.push(s);$('setName').value='';log(`Player set created: ${s}`);save()};
+function addPlayer(){let name=$('playerName').value.trim();if(!name)return toast('Player name required');state.players.push({id:uid(),name,country:$('playerCountry').value.trim(),role:$('playerRole').value,set:$('playerSet').value||'Default Set',base:+$('playerBase').value||0,order:+$('playerOrder').value||1,status:'pending',teamId:'',soldPrice:0,image:pendingPlayerImage});pendingPlayerImage='';$('playerImageInput').value='';setPreview('playerImagePreview','');$('playerName').value='';$('playerCountry').value='';log(`Player added: ${name}`);save()}
+$('addPlayer').onclick=addPlayer;
+function render(){ $('leagueSubtitle').textContent=state.leagueName||'Create and run your own auction';$('mOwners').textContent=state.owners.length;$('mTeams').textContent=state.teams.length;$('mPlayers').textContent=state.players.length;$('mSold').textContent=state.players.filter(p=>p.status==='sold').length;
+$('checklist').innerHTML=[['Auction setup',!!state.leagueName],['Owners / bidders',state.owners.length>0],['Team list',state.teams.length>0],['Player sets & players',state.players.length>0]].map(([s,ok])=>`<div style="padding:8px 0"> <span class="tag ${ok?'green':'red'}">${ok?'READY':'NEEDS SETUP'}</span> ${s}</div>`).join('');
+$('recentActivity').innerHTML=state.history.slice(0,8).map(h=>`<div><b>${h.msg}</b><div class="muted">${h.time}</div></div>`).join('')||'<div class="empty">No activity yet.</div>';
+$('ownersTable').innerHTML=table(['Logo','Owner','Company','Team Budget','Player Budget','Team spent','Actions'],state.owners.map(o=>[avatar(o.logo,'Company'),o.name,o.company||'—',money(o.budget),money(o.playerBudget),money(o.spent),`<button class="small" onclick="editOwner('${o.id}')">Edit</button> <button class="small danger" onclick="delOwner('${o.id}')">Delete</button>`]));
+$('teamCustomOwner').innerHTML='<option value="">Unassigned</option>'+state.owners.map(o=>`<option value="${o.id}">${o.display||o.name}</option>`).join('');
+$('teamsTable').innerHTML=table(['Logo','Team','Base price','Team Auction owner','Team price','Player purse','Actions'],state.teams.map(t=>[avatar(t.logo,'Team'),t.name,money(t.basePrice),ownerName(t.ownerId)||'Unassigned',t.price?money(t.price):'—',money(teamPurse(t)),`<button class="small" onclick="editTeam('${t.id}')">Edit</button> <button class="small danger" onclick="delTeam('${t.id}')">Delete</button>`]));
+$('setList').innerHTML=state.sets.map(s=>`<div style="display:flex;justify-content:space-between;padding:7px;border-bottom:1px solid var(--line)"><span>${s} <span class="tag">${state.players.filter(p=>p.set===s).length} players</span></span><button class="small" onclick="removeSet('${esc(s)}')">Remove</button></div>`).join('');
+$('playerSet').innerHTML=state.sets.map(s=>`<option>${s}</option>`).join('');let keepSet=$('playerAuctionSet').value||'all';$('playerAuctionSet').innerHTML='<option value="all">All Sets</option>'+state.sets.map(s=>`<option>${s}</option>`).join('');if([...$('playerAuctionSet').options].some(o=>o.value===keepSet))$('playerAuctionSet').value=keepSet;
+$('playersTable').innerHTML=table(['Photo','Order','Player','Country','Role','Set','Base','Status','Actions'],state.players.slice().sort((a,b)=>a.order-b.order).map(p=>[avatar(p.image,'Player'),p.order,p.name,p.country||'—',p.role,p.set,money(p.base),p.status,`<button class="small" onclick="editPlayer('${p.id}')">Edit</button> <button class="small danger" onclick="delPlayer('${p.id}')">Delete</button>`]));
+$('teamAuctionSelect').innerHTML=state.teams.map(t=>`<option value="${t.id}">${t.name} ${t.ownerId?'(SOLD)':''}</option>`).join('');$('teamBidderSelect').innerHTML=state.owners.map(o=>`<option value="${o.id}">${o.display||o.name} · budget ${money(o.budget-o.spent)}</option>`).join('');
+let keepPlayer=$('playerAuctionSelect').value;let allAuctionPlayers=state.players.filter(p=>$('playerAuctionSet').value==='all'||p.set===$('playerAuctionSet').value).sort((a,b)=>(a.order||0)-(b.order||0));$('playerAuctionSelect').innerHTML=allAuctionPlayers.map(p=>`<option value="${p.id}">${p.order}. ${p.name} · ${p.set} · ${p.status.toUpperCase()}</option>`).join('');if(allAuctionPlayers.some(p=>p.id===keepPlayer))$('playerAuctionSelect').value=keepPlayer;else if(allAuctionPlayers.length)$('playerAuctionSelect').value=allAuctionPlayers.find(p=>p.status==='pending')?.id||allAuctionPlayers[0].id;
+let keepBidder=$('playerBidderSelect').value;let bidders=state.mode==='linked'?state.teams.filter(t=>t.ownerId):state.teams; $('playerBidderSelect').innerHTML=bidders.map(t=>`<option value="${t.id}">${t.name} · purse ${money(teamPurse(t)-teamSpent(t))}</option>`).join('');if(bidders.some(t=>t.id===keepBidder))$('playerBidderSelect').value=keepBidder;
+renderTeamAuction();renderPlayerAuction();renderSquads();renderResults();renderHighlights();
+}
+function esc(s){return String(s).replaceAll("'","\\'")}
+function table(head,rows){if(!rows.length)return'<div class="empty">Nothing here yet. Add data above to get started.</div>';return `<div class="tablewrap"><table><thead><tr>${head.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`}
+function ownerName(id){return state.owners.find(o=>o.id===id)?.display||state.owners.find(o=>o.id===id)?.name||''}
+function teamPurse(t){return state.mode==='linked'?(state.playerPurse||0):(t.customPurse||state.playerPurse)}
+function teamSpent(t){return state.mode==='linked'?(t.playerSpent||0):(t.customSpent||0)}
+function teamBidState(id){return state.teamAuctions[id]||(state.teamAuctions[id]={bid:0,bidder:'',status:'pending',log:[]})}
+function playerBidState(id){return state.playerAuctions[id]||(state.playerAuctions[id]={bid:0,bidder:'',status:'pending',log:[]})}
+function renderTeamAuction(){let id=$('teamAuctionSelect').value,t=state.teams.find(x=>x.id===id);if(!t){$('teamAuctionName').textContent='No team added';$('teamCurrentPrice').textContent='—';$('teamBidSummary').textContent='Add teams first';return}let a=teamBidState(id);$('teamAuctionName').textContent=t.name;$('teamAuctionLogo').innerHTML=avatar(t.logo,'Team');$('teamCurrentPrice').textContent=money(a.bid||t.basePrice);$('teamAuctionInfo').textContent=`Base ${money(t.basePrice)} · ${a.status.toUpperCase()}`;$('teamAuctionStatus').textContent=a.status.toUpperCase();$('teamBidSummary').textContent=a.bidder?`Leading bidder: ${ownerName(a.bidder)} · ${money(a.bid)}`:`No bids yet · Base price ${money(t.basePrice)}`;$('teamLog').innerHTML=a.log.slice().reverse().map(x=>`<div>${x}</div>`).join('')||'<div class="empty">No bids for this team yet.</div>'}
+$('teamAuctionSelect').onchange=renderTeamAuction;$('teamBidderSelect').onchange=()=>{};
+$('teamBid').onclick=()=>{let t=state.teams.find(x=>x.id===$('teamAuctionSelect').value),o=state.owners.find(x=>x.id===$('teamBidderSelect').value);if(!t||!o)return toast('Add/select team and owner');let a=teamBidState(t.id);if(a.status!=='pending')return toast('This team auction is already closed');if(state.ownerLimit&&state.teams.some(x=>x.ownerId===o.id&&x.id!==t.id))return toast('Owner already purchased a team in this league');let amount=Math.max(t.basePrice,a.bid? a.bid+state.teamIncrement:t.basePrice);if(o.budget-o.spent<amount)return toast('Owner budget is not enough for this bid');a.bid=amount;a.bidder=o.id;a.log.push(`${ownerName(o.id)} bid ${money(amount)}`);log(`${ownerName(o.id)} bid ${money(amount)} for ${t.name}`);render();toast('Bid placed')};
+$('teamBidMinus').onclick=()=>{let t=state.teams.find(x=>x.id===$('teamAuctionSelect').value);if(t){let a=teamBidState(t.id);a.bid=Math.max(0,a.bid-state.teamIncrement);render();toast('Current bid adjusted down')}}
+$('teamSell').onclick=()=>{let t=state.teams.find(x=>x.id===$('teamAuctionSelect').value);if(!t)return;let a=teamBidState(t.id);if(!a.bidder)return toast('No bid to sell');let o=state.owners.find(x=>x.id===a.bidder);if(!o)return; if(o.spent+a.bid>o.budget)return toast('Owner budget exceeded');o.spent+=a.bid;t.ownerId=o.id;t.price=a.bid;a.status='sold';log(`${t.name} SOLD to ${o.name} for ${money(a.bid)}`);render();toast('Team sold!')};
+$('teamUnsold').onclick=()=>{let t=state.teams.find(x=>x.id===$('teamAuctionSelect').value);if(!t)return;teamBidState(t.id).status='unsold';log(`${t.name} marked UNSOLD`);render()};
+$('teamNext').onclick=()=>{let s=$('teamAuctionSelect'),i=s.selectedIndex;s.selectedIndex=Math.min(s.options.length-1,i+1);renderTeamAuction()};
+$('teamResetCurrent').onclick=()=>{let t=state.teams.find(x=>x.id===$('teamAuctionSelect').value);if(t){state.teamAuctions[t.id]={bid:0,bidder:'',status:'pending',log:[]};render()}};
+function renderPlayerAuction(){let id=$('playerAuctionSelect').value,p=state.players.find(x=>x.id===id);if(!p){$('playerAuctionName').textContent='No players available';$('playerCurrentPrice').textContent='—';$('playerBidSummary').textContent='Add players first';$('playerAuctionStatus').textContent='EMPTY';$('playerBidderPurse').textContent='—';$('playerSlotsLeft').textContent='—';$('playerRemainingPurse').textContent='—';$('playerStatusDetail').textContent='—';$('playerLog').innerHTML='<div class="empty">No player selected.</div>';return}let a=playerBidState(id);$('playerAuctionName').textContent=p.name;$('playerAuctionPhoto').innerHTML= p.image?`<img src="${p.image}" alt="${p.name}" style="width:112px;height:112px;object-fit:cover;border-radius:50%;border:3px solid #fff;box-shadow:0 4px 16px #4f46e533;margin:0 auto 10px;display:block">`:avatar('', 'Player');$('playerCountryRole').textContent=`${p.country||'Country not set'} · ${p.role} · ${p.set}`;$('playerRoleTag').textContent=p.role||'PLAYER';$('playerOrderTag').textContent=`#${p.order||'—'}`;$('playerCurrentPrice').textContent=money(a.bid||p.base);$('playerAuctionInfo').textContent=`Base ${money(p.base)} · ${a.status.toUpperCase()}`;$('playerAuctionStatus').textContent=a.status.toUpperCase();$('playerStatusDetail').textContent=a.status.toUpperCase();let t=state.teams.find(x=>x.id===a.bidder);$('playerBidSummary').textContent=t?`Leading team: ${t.name} · ${money(a.bid)}`:`No bids yet · Base price ${money(p.base)}`;$('playerLog').innerHTML=a.log.slice().reverse().map(x=>`<div>${x}</div>`).join('')||'<div class="empty">No bids yet for this player.</div>';let selected=state.teams.find(x=>x.id===$('playerBidderSelect').value);if(!selected)selected=t||state.teams.find(x=>state.mode==='linked'?x.ownerId:true);if(selected&&$('playerBidderSelect').value!==selected.id)$('playerBidderSelect').value=selected.id;$('playerBidderPurse').textContent=selected?money(Math.max(0,teamPurse(selected)-teamSpent(selected))):'No eligible team';$('playerRemainingPurse').textContent=selected?money(Math.max(0,teamPurse(selected)-teamSpent(selected))):'—';$('playerSlotsLeft').textContent=selected?Math.max(0,state.squadLimit-(selected.players||[]).length):'—';let closed=a.status!=='pending';['playerBid','playerSell','playerUnsold','playerBidMinus'].forEach(k=>$(k).disabled=closed||!selected);$('playerResetCurrent').disabled=!p;}
+$('playerAuctionSet').onchange=()=>{let set=$('playerAuctionSet').value;let ps=state.players.filter(p=>set==='all'||p.set===set).sort((a,b)=>(a.order||0)-(b.order||0));$('playerAuctionSelect').innerHTML=ps.map(p=>`<option value="${p.id}">${p.order}. ${p.name} · ${p.status.toUpperCase()}</option>`).join('');let first=ps.find(p=>p.status==='pending')||ps[0];if(first)$('playerAuctionSelect').value=first.id;renderPlayerAuction()};
+$('playerAuctionSelect').onchange=renderPlayerAuction;$('playerBidderSelect').onchange=renderPlayerAuction; $('playerPrev').onclick=()=>{let s=$('playerAuctionSelect');if(s.options.length){s.selectedIndex=Math.max(0,s.selectedIndex-1);renderPlayerAuction()}};
+$('playerBid').onclick=()=>{let p=state.players.find(x=>x.id===$('playerAuctionSelect').value),t=state.teams.find(x=>x.id===$('playerBidderSelect').value);if(!p||!t)return toast('Choose a player and team');let a=playerBidState(p.id);if(a.status!=='pending')return toast('Player auction is closed');if(state.mode==='linked'&&!t.ownerId)return toast('In Linked mode, team must be purchased in Team Auction');if((t.players||[]).length>=state.squadLimit)return toast('Squad limit reached');let next=a.bid?a.bid+state.playerIncrement:p.base;if(teamPurse(t)-teamSpent(t)<next)return toast('Team purse is insufficient');a.bid=next;a.bidder=t.id;a.log.push(`${t.name} bid ${money(next)}`);log(`${t.name} bid ${money(next)} for player ${p.name}`);render();toast('Player bid placed')};
+$('playerBidMinus').onclick=()=>{let p=state.players.find(x=>x.id===$('playerAuctionSelect').value);if(p){let a=playerBidState(p.id);a.bid=Math.max(0,a.bid-(+state.playerIncrement||1));if(a.bid===0)a.bidder='';if(a.log.length)a.log.pop();renderPlayerAuction();toast('Current bid adjusted')}};
+$('playerSell').onclick=()=>{let p=state.players.find(x=>x.id===$('playerAuctionSelect').value);if(!p)return;let a=playerBidState(p.id),t=state.teams.find(x=>x.id===a.bidder);if(!t)return toast('No valid team bid');if(teamPurse(t)-teamSpent(t)<a.bid)return toast('Purse is insufficient');p.status='sold';p.teamId=t.id;p.soldPrice=a.bid;t.players=t.players||[];t.players.push(p.id);if(state.mode==='linked')t.playerSpent=(t.playerSpent||0)+a.bid;else t.customSpent=(t.customSpent||0)+a.bid;a.status='sold';log(`${p.name} SOLD to ${t.name} for ${money(a.bid)}`);render();toast('Player sold!')};
+$('playerUnsold').onclick=()=>{let p=state.players.find(x=>x.id===$('playerAuctionSelect').value);if(!p)return;p.status='unsold';playerBidState(p.id).status='unsold';log(`${p.name} marked UNSOLD`);render()};
+$('playerNext').onclick=()=>{let s=$('playerAuctionSelect'),list=[...s.options];if(!list.length)return;let start=s.selectedIndex;for(let i=start+1;i<list.length;i++){let p=state.players.find(x=>x.id===list[i].value);if(p&&p.status==='pending'){s.selectedIndex=i;renderPlayerAuction();return}}toast('No more pending players in this set')};
+$('playerResetCurrent').onclick=()=>{let p=state.players.find(x=>x.id===$('playerAuctionSelect').value);if(p){state.playerAuctions[p.id]={bid:0,bidder:'',status:'pending',log:[]};renderPlayerAuction()}};
+function renderSquads(){ $('squadTable').innerHTML=table(['Team','Owner','Squad size','Players','Spent','Remaining purse'],state.teams.map(t=>[(t.name),state.mode==='linked'?ownerName(t.ownerId):(ownerName(t.customOwner)||'Custom bidder'),(t.players||[]).length,(t.players||[]).map(id=>state.players.find(p=>p.id===id)?.name).filter(Boolean).join(', ')||'—',money(teamSpent(t)),money(Math.max(0,teamPurse(t)-teamSpent(t)))]))}
+function renderResults(){let soldTeams=state.teams.filter(t=>t.ownerId);let soldPlayers=state.players.filter(p=>p.status==='sold');$('resultsTables').innerHTML='<h3>Team Auction Results</h3>'+table(['Team','Owner','Sold price'],soldTeams.map(t=>[t.name,ownerName(t.ownerId),money(t.price)]))+'<h3 style="margin-top:20px">Player Auction Results</h3>'+table(['Player','Country','Role','Team','Price'],soldPlayers.map(p=>[p.name,p.country,p.role,state.teams.find(t=>t.id===p.teamId)?.name||'—',money(p.soldPrice)]))+'<h3 style="margin-top:20px">Activity Log</h3>'+table(['Time','Activity'],state.history.map(h=>[h.time,h.msg]))}
+$('refreshSquads').onclick=renderSquads;$('clearHistory').onclick=()=>{if(confirm('Clear activity history?')){state.history=[];render()}};
+function delOwner(id){if(!confirm('Delete this owner?'))return;state.owners=state.owners.filter(x=>x.id!==id);render();save()}
+function delTeam(id){if(!confirm('Delete this team?'))return;state.teams=state.teams.filter(x=>x.id!==id);render();save()}
+function delPlayer(id){if(!confirm('Delete this player?'))return;state.players=state.players.filter(x=>x.id!==id);render();save()}
+function removeSet(s){if(!confirm('Remove this set? Players in it will move to Default Set.'))return;state.sets=state.sets.filter(x=>x!==s);state.players.forEach(p=>{if(p.set===s)p.set='Default Set'});if(!state.sets.includes('Default Set'))state.sets.unshift('Default Set');render();save()}
+function editOwner(id){let o=state.owners.find(x=>x.id===id);if(!o)return;openModal('Edit Owner',`<div class="formgrid"><div class="field"><label>Name</label><input id="eName" value="${o.name}"></div><div class="field"><label>Team Budget</label><input id="eBudget" type="number" value="${o.budget}"></div><div class="field"><label>Player Budget</label><input id="ePlayerBudget" type="number" value="${o.playerBudget}"></div><div class="field"><label>Company Logo</label>${avatar(o.logo,'Company')}<input id="eLogo" type="file" accept="image/*"></div></div><button class="primary" onclick="saveOwner('${id}')">Save</button>`)}
+function saveOwner(id){let o=state.owners.find(x=>x.id===id);o.name=$('eName').value;o.display=o.name;o.budget=+$('eBudget').value;o.playerBudget=+$('ePlayerBudget').value;let f=$('eLogo').files[0];if(f)processImage(f,src=>{if(src)o.logo=src;closeModal();save()});else{closeModal();save()}}
+function editTeam(id){let t=state.teams.find(x=>x.id===id);if(!t)return;openModal('Edit Team',`<div class="formgrid"><div class="field"><label>Name</label><input id="eName" value="${t.name}"></div><div class="field"><label>Base price</label><input id="eBase" type="number" value="${t.basePrice}"></div><div class="field"><label>Custom player purse</label><input id="ePurse" type="number" value="${t.customPurse}"></div><div class="field"><label>Team Logo</label>${avatar(t.logo,'Team')}<input id="eLogo" type="file" accept="image/*"></div></div><button class="primary" onclick="saveTeam('${id}')">Save</button>`)}
+function saveTeam(id){let t=state.teams.find(x=>x.id===id);t.name=$('eName').value;t.basePrice=+$('eBase').value;t.customPurse=+$('ePurse').value;let f=$('eLogo').files[0];if(f)processImage(f,src=>{if(src)t.logo=src;closeModal();save()});else{closeModal();save()}}
+function editPlayer(id){let p=state.players.find(x=>x.id===id);if(!p)return;openModal('Edit Player',`<div class="formgrid"><div class="field"><label>Name</label><input id="eName" value="${p.name}"></div><div class="field"><label>Country</label><input id="eCountry" value="${p.country}"></div><div class="field"><label>Role</label><select id="eRole">${['Batter','Bowler','All-rounder','Wicketkeeper'].map(x=>`<option ${x===p.role?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>Set</label><select id="eSet">${state.sets.map(x=>`<option ${x===p.set?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>Base price</label><input id="eBase" type="number" value="${p.base}"></div><div class="field"><label>Order</label><input id="eOrder" type="number" value="${p.order}"></div><div class="field"><label>Player Photo</label>${avatar(p.image,'Player')}<input id="eImage" type="file" accept="image/*"></div></div><button class="primary" onclick="savePlayer('${id}')">Save</button>`)}
+function savePlayer(id){let p=state.players.find(x=>x.id===id);p.name=$('eName').value;p.country=$('eCountry').value;p.role=$('eRole').value;p.set=$('eSet').value;p.base=+$('eBase').value;p.order=+$('eOrder').value;let f=$('eImage').files[0];if(f)processImage(f,src=>{if(src)p.image=src;closeModal();save()});else{closeModal();save()}}
+function openModal(title,content){$('modalTitle').textContent=title;$('modalContent').innerHTML=content;$('editModal').classList.add('open')}function closeModal(){$('editModal').classList.remove('open')}$('closeModal').onclick=closeModal;
+$('backupBtn').onclick=()=>download('auction-arena-backup.json',JSON.stringify(state,null,2),'application/json');
+function download(name,data,type){let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type}));a.download=name;a.click();URL.revokeObjectURL(a.href)}
+$('backupImport').onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);save();toast('Backup restored')}catch{toast('Invalid backup file')}};r.readAsText(f)};
+$('csvTemplate').onclick=()=>download('auction-arena-player-template.csv','name,country,role,set,basePrice,order\\nExample Player,Bangladesh,Batter,Set 1,10,1\\n','text/csv');
+$('csvImport').onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{let lines=r.result.split(/\\r?\\n/).slice(1);lines.forEach(line=>{if(!line.trim())return;let [name,country,role,set,basePrice,order]=line.split(',').map(x=>x.trim());if(name)state.players.push({id:uid(),name,country,role:role||'Batter',set:set||'Default Set',base:+basePrice||0,order:+order||1,status:'pending',teamId:'',soldPrice:0});if(set&&!state.sets.includes(set))state.sets.push(set)});log('Players imported from CSV');save()};r.readAsText(f)};
+$('exportResults').onclick=()=>{let rows=[['Player','Country','Role','Team','Price','Status'],...state.players.map(p=>[p.name,p.country,p.role,state.teams.find(t=>t.id===p.teamId)?.name||'',p.soldPrice,p.status])];download('auction-arena-results.csv',rows.map(r=>r.join(',')).join('\\n'),'text/csv')};
+$('resetAuctions').onclick=()=>{if(!confirm('Reset all auction statuses and sold results? Owners, teams and players remain.'))return;state.teamAuctions={};state.playerAuctions={};state.owners.forEach(o=>o.spent=0);state.teams.forEach(t=>{t.ownerId='';t.price=0;t.playerSpent=0;t.customSpent=0;t.players=[]});state.players.forEach(p=>{p.status='pending';p.teamId='';p.soldPrice=0});log('Auction statuses reset');save()};
+$('resetGame').onclick=()=>{if(!confirm('Delete all Auction Arena data from this browser? Export backup first if needed.'))return;state=initial();save();setupFields()};
+$('teamBidderSelect').addEventListener('change',()=>{});$('playerBidderSelect').addEventListener('change',()=>{});
+
+// AI Auction Simulator: local rule-based AI bidders (not an external AI service).
+function aiBidTeamAuction(){
+ let teams=state.teams.filter(t=>!t.ownerId && teamBidState(t.id).status==='pending');
+ if(!state.owners.length||!teams.length){toast('Add owners and unsold teams first');return}
+ teams.forEach(t=>{
+  let candidates=state.owners.filter(o=>(!state.ownerLimit||!state.teams.some(x=>x.ownerId===o.id&&x.id!==t.id)) && (o.budget-o.spent)>=t.basePrice);
+  if(!candidates.length){teamBidState(t.id).status='unsold';return}
+  // AI prefers budget-rich bidders but varies its willingness per team.
+  candidates=candidates.map(o=>({o,score:(o.budget-o.spent)*(0.55+Math.random()*0.35)})).sort((a,b)=>b.score-a.score);
+  let winner=candidates[0].o, a=teamBidState(t.id), max=Math.min(winner.budget-winner.spent,Math.max(t.basePrice,t.basePrice*(1.25+Math.random()*1.6)));
+  let bid=t.basePrice;
+  while(bid+state.teamIncrement<=max)bid+=state.teamIncrement;
+  if(bid<=0)bid=t.basePrice;
+  winner.spent+=bid;t.ownerId=winner.id;t.price=bid;a.bid=bid;a.bidder=winner.id;a.status='sold';a.log.push(`🤖 AI ${winner.display||winner.name} won at ${money(bid)}`);
+  log(`AI SIM: ${t.name} SOLD to ${winner.name} for ${money(bid)}`);
+ });
+ render();toast('AI Team Auction simulation completed');
+}
+function aiSimulatePlayers(){
+ let pending=state.players.filter(p=>p.status==='pending').sort((a,b)=>a.order-b.order);
+ if(!pending.length){toast('No pending players');return}
+ let eligible=state.mode==='linked'?state.teams.filter(t=>t.ownerId):state.teams;
+ if(!eligible.length){toast(state.mode==='linked'?'Run Team Auction first or switch to Custom Mode':'Add teams for Player Auction');return}
+ pending.forEach(p=>{
+  let bidders=eligible.filter(t=>(t.players||[]).length<state.squadLimit && teamPurse(t)-teamSpent(t)>=p.base);
+  if(!bidders.length){p.status='unsold';playerBidState(p.id).status='unsold';log(`AI SIM: ${p.name} UNSOLD (no eligible team)`);return}
+  // AI considers remaining purse, squad need, and random interest by role.
+  bidders=bidders.map(t=>{let size=(t.players||[]).length, remaining=teamPurse(t)-teamSpent(t), need=Math.max(0,state.squadLimit-size);let roleCount=(t.players||[]).map(pid=>state.players.find(x=>x.id===pid)?.role).filter(Boolean).filter(r=>r===p.role).length;let interest=(remaining/(teamPurse(t)||1))*(1+Math.random())+(need/(state.squadLimit||1))+(roleCount===0?.35:0);return {t,interest,cap:Math.min(remaining,Math.max(p.base,p.base*(1.5+Math.random()*4)))}}).sort((a,b)=>b.interest-a.interest);
+  let winner=bidders[0], bid=p.base;
+  while(bid+state.playerIncrement<=winner.cap)bid+=state.playerIncrement;
+  if(bid>winner.cap)bid=Math.floor(winner.cap/state.playerIncrement)*state.playerIncrement;
+  bid=Math.max(p.base,bid);
+  p.status='sold';p.teamId=winner.t.id;p.soldPrice=bid;winner.t.players=winner.t.players||[];winner.t.players.push(p.id);
+  if(state.mode==='linked')winner.t.playerSpent=(winner.t.playerSpent||0)+bid;else winner.t.customSpent=(winner.t.customSpent||0)+bid;
+  let a=playerBidState(p.id);a.bid=bid;a.bidder=winner.t.id;a.status='sold';a.log.push(`🤖 AI ${winner.t.name} won ${money(bid)}`);
+  log(`AI SIM: ${p.name} SOLD to ${winner.t.name} for ${money(bid)}`);
+ });
+ render();toast('AI Player Auction simulation completed');
+}
+$('simulateTeamAuction').onclick=aiBidTeamAuction; $('simulateAllHome').onclick=()=>{aiBidTeamAuction();aiSimulatePlayers();showPage('highlights')};
+$('simulatePlayerAuction').onclick=aiSimulatePlayers;
+$('simulateBothAuctions')?.addEventListener('click',()=>{aiBidTeamAuction();aiSimulatePlayers()});
+function renderHighlights(){
+ const soldT=state.teams.filter(t=>t.ownerId),soldP=state.players.filter(p=>p.status==='sold'),unsold=state.players.filter(p=>p.status==='unsold');
+ const totalT=soldT.reduce((s,t)=>s+(t.price||0),0),totalP=soldP.reduce((s,p)=>s+(p.soldPrice||0),0);
+ $('highlightMetrics').innerHTML=[['Teams Sold',soldT.length],['Players Sold',soldP.length],['Total Team Spend',money(totalT)],['Player Auction Spend',money(totalP)]].map(([l,v])=>`<div class="card"><div class="metric-label">${l}</div><div class="metric">${v}</div></div>`).join('');
+ let topPlayer=soldP.slice().sort((a,b)=>b.soldPrice-a.soldPrice)[0],topTeam=soldT.slice().sort((a,b)=>b.price-a.price)[0];
+ let ownerSpend=state.owners.map(o=>({o,spent:o.spent})).sort((a,b)=>b.spent-a.spent)[0];
+ $('highlightContent').innerHTML=`<div class="grid2"><div class="panel"><h3>🔥 Biggest Player Buy</h3>${topPlayer?`<div class="price">${money(topPlayer.soldPrice)}</div><b>${topPlayer.name}</b><div class="muted">Bought by ${state.teams.find(t=>t.id===topPlayer.teamId)?.name||'—'}</div>`:'<div class="empty">No players sold yet.</div>'}</div><div class="panel"><h3>🏟️ Highest Team Auction</h3>${topTeam?`<div class="price">${money(topTeam.price)}</div><b>${topTeam.name}</b><div class="muted">Owned by ${ownerName(topTeam.ownerId)}</div>`:'<div class="empty">No teams sold yet.</div>'}</div></div><div class="grid2" style="margin-top:14px"><div class="panel"><h3>💸 Owner Spending Leader</h3>${ownerSpend?`<b>${ownerSpend.o.display||ownerSpend.o.name}</b><div class="price">${money(ownerSpend.spent)}</div>`:'No owners added'}</div><div class="panel"><h3>🟡 Unsold Players</h3><div class="metric">${unsold.length}</div><div class="muted">${unsold.map(p=>p.name).join(', ')||'None'}</div></div></div><div class="panel" style="margin-top:14px"><h3>Recent Auction Moments</h3>${state.history.filter(h=>/SOLD|AI SIM|bid/i.test(h.msg)).slice(0,12).map(h=>`<div style="padding:8px;border-bottom:1px solid var(--line)">${h.msg}<div class="muted">${h.time}</div></div>`).join('')||'<div class="empty">Auction highlights will appear here after bidding.</div>'}`;
+}
+
+
+// Smooth, sequential simulator with visible progress and safe stop control.
+let simRunning=false, simStopRequested=false;
+const simWait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+function simProgress(label,n,total){$('simProgress').style.display='block';$('simProgressText').textContent=`${label} · ${n}/${total}`;$('simProgressBar').style.width=(total?Math.round(n/total*100):0)+'%'}
+function simFinish(message){simRunning=false;$('simProgress').style.display='none';render();toast(message)}
+$('simStop').onclick=()=>{simStopRequested=true;$('simProgressText').textContent='Stopping after current item…'};$('playerSimStop').onclick=()=>{simStopRequested=true;$('simProgressText').textContent='Stopping after current item…'};
+async function aiBidTeamAuction(){
+ if(simRunning)return toast('A simulation is already running');
+ let list=state.teams.filter(t=>!t.ownerId&&teamBidState(t.id).status==='pending');
+ if(!state.owners.length||!list.length)return toast('Add owners and unsold teams first');
+ simRunning=true;simStopRequested=false;
+ for(let i=0;i<list.length;i++){
+  if(simStopRequested)break;
+  const t=list[i],a=teamBidState(t.id),base=Math.max(0,+t.basePrice||+state.teamBase||0),inc=Math.max(1,+state.teamIncrement||1);
+  let eligible=state.owners.filter(o=>(!state.ownerLimit||!state.teams.some(x=>x.ownerId===o.id&&x.id!==t.id))&&(o.budget-o.spent)>=base);
+  if(!eligible.length){a.status='unsold';log(`SIM: ${t.name} UNSOLD (no eligible owner)`)}
+  else{
+   eligible.sort((x,y)=>((y.budget-y.spent)*(.6+Math.random()*.4))-((x.budget-x.spent)*(.6+Math.random()*.4)));
+   const winner=eligible[0],max=Math.min(winner.budget-winner.spent,Math.max(base,base*(1.15+Math.random()*1.5)));
+   let bid=base;while(bid+inc<=max)bid+=inc;
+   winner.spent+=bid;t.ownerId=winner.id;t.price=bid;a.bid=bid;a.bidder=winner.id;a.status='sold';a.log.push(`AI ${winner.display||winner.name} won at ${money(bid)}`);log(`AI SIM: ${t.name} SOLD to ${winner.name} for ${money(bid)}`);
+  }
+  simProgress('Team auction',i+1,list.length);render();await simWait(350);
+ }
+ simFinish(simStopRequested?'Team auction simulation stopped':'Team auction simulation completed');
+}
+async function aiSimulatePlayers(){
+ if(simRunning)return toast('A simulation is already running');
+ let list=state.players.filter(p=>p.status==='pending').sort((a,b)=>(a.order||0)-(b.order||0));
+ if(!list.length)return toast('No pending players');
+ const eligible=state.mode==='linked'?state.teams.filter(t=>t.ownerId):state.teams;
+ if(!eligible.length)return toast(state.mode==='linked'?'Run Team Auction first or switch to Custom Mode':'Add teams for Player Auction');
+ simRunning=true;simStopRequested=false;
+ for(let i=0;i<list.length;i++){
+  if(simStopRequested)break;
+  const p=list[i],base=Math.max(0,+p.base||0),inc=Math.max(1,+state.playerIncrement||1);
+  let bidders=eligible.filter(t=>(t.players||[]).length<Math.max(1,+state.squadLimit||1)&&teamPurse(t)-teamSpent(t)>=base);
+  if(!bidders.length){p.status='unsold';playerBidState(p.id).status='unsold';log(`AI SIM: ${p.name} UNSOLD (no eligible team)`)}
+  else{
+   bidders=bidders.map(t=>{let remain=teamPurse(t)-teamSpent(t),size=(t.players||[]).length;let roles=(t.players||[]).map(pid=>state.players.find(x=>x.id===pid)?.role).filter(Boolean);let roleNeed=roles.includes(p.role)?0:.25;let interest=(remain/(teamPurse(t)||1))*(.5+Math.random())+(1-size/Math.max(1,state.squadLimit))+roleNeed;let cap=Math.min(remain,Math.max(base,base*(1.3+Math.random()*3)));return {t,interest,cap}}).sort((a,b)=>b.interest-a.interest);
+   let win=bidders[0],bid=base;while(bid+inc<=win.cap)bid+=inc;
+   if(!Number.isFinite(bid)||bid>teamPurse(win.t)-teamSpent(win.t))bid=base;
+   p.status='sold';p.teamId=win.t.id;p.soldPrice=bid;win.t.players=win.t.players||[];win.t.players.push(p.id);
+   if(state.mode==='linked')win.t.playerSpent=(win.t.playerSpent||0)+bid;else win.t.customSpent=(win.t.customSpent||0)+bid;
+   let a=playerBidState(p.id);a.bid=bid;a.bidder=win.t.id;a.status='sold';a.log.push(`AI ${win.t.name} won ${money(bid)}`);log(`AI SIM: ${p.name} SOLD to ${win.t.name} for ${money(bid)}`);
+  }
+  simProgress('Player auction',i+1,list.length);render();await simWait(300);
+ }
+ simFinish(simStopRequested?'Player auction simulation stopped':'Player auction simulation completed');
+}
+$('simulateTeamAuction').onclick=aiBidTeamAuction;
+$('simulatePlayerAuction').onclick=aiSimulatePlayers;
+$('simulateAllHome').onclick=async()=>{if(simRunning)return toast('Simulation already running');await aiBidTeamAuction();if(!simStopRequested)await aiSimulatePlayers();showPage('highlights')};
+$('simulateBothAuctions')?.addEventListener('click',async()=>{await aiBidTeamAuction();if(!simStopRequested)await aiSimulatePlayers()});
+
+setupFields();render();if(state.page)showPage(state.page);
+</script>
+</body></html>
